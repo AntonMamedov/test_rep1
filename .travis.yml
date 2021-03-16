@@ -20,7 +20,7 @@ script:
   - cppcheck --error-exitcode=1 --suppress=missingIncludeSystem src/*.c include/testy/*.h
   - mkdir build
   - cd build
-  - cmake .. && make
+  - cmake .. -DCMAKE_CXX_FLAGS="--coverage" && make
   - valgrind --error-exitcode=1 --leak-check=full --show-leak-kinds=all --track-origins=yes ./tests
   - lcov --directory . --capture --output-file coverage.info
 
